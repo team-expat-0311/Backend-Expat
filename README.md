@@ -10,8 +10,9 @@ API is not deployed yet, check back here soon...
 ### [POST] /api/auth/register
 
 **Body**
+
 | name | type | required | description |
-| -----  | -----  | -------- | ----------- |
+| :----  | :-----  | :-------- | :----------- |
 | username | string | yes | username (unique) |
 | password | string | yes | password |
 | name | string | yes | user's first name |
