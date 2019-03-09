@@ -7,16 +7,20 @@ const Users = require('../users/usersModel.js');
 
 router.post('/register', async (req, res) => {
     try {
-        let user = req.body;
-        // generate hashed pw with 8 rounds
-        const hash = bcrypt.hashSync(user.password, 8);
-        // override the pw with the hashed pw
-        user.password = hash;
-        // add user to the db
-        const newUser = await Users.add(user)
-        res.status(201).json(newUser)
+        if (!req.body.username || !req.body.password || !req.body.role || !req.body.name) {
+            res.status(404).json({ message: 'Please provide at least username, password, role, name for a new user' });
+        } else {
+            let user = req.body;
+            // generate hashed pw with 8 rounds
+            const hash = bcrypt.hashSync(user.password, 8);
+            // override the pw with the hashed pw
+            user.password = hash;
+            // add user to the db
+            const newUser = await Users.add(user)
+            res.status(201).json(newUser)
+        }
     } catch (error) {
-        res.status(500).json(error);
+        res.status(500).json({ error, message: `The username ${req.body.username} already exists, please choose another username` });
     }
 });
 
