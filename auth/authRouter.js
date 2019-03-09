@@ -3,10 +3,11 @@ const bcrypt = require('bcryptjs');
 const tokenService = require('./token-service.js');
 const Users = require('../users/usersModel.js');
 
-// routes here all have /api/auth prefix from server.js
+// *** routes here all have /api/auth prefix from server.js ***
 
 router.post('/register', async (req, res) => {
     try {
+        // return 404 if user tries to register without necessary info
         if (!req.body.username || !req.body.password || !req.body.role || !req.body.name) {
             res.status(404).json({ message: 'Please provide at least username, password, role, name for a new user' });
         } else {
@@ -17,6 +18,7 @@ router.post('/register', async (req, res) => {
             user.password = hash;
             // add user to the db
             const newUser = await Users.add(user)
+            // return 201 and the newUser if successful
             res.status(201).json(newUser)
         }
     } catch (error) {
