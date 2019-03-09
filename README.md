@@ -1,5 +1,5 @@
 # Expat API
-***
+
 
 ### Deployed API url
 API is not deployed yet, check back here soon...
@@ -11,7 +11,7 @@ API is not deployed yet, check back here soon...
 
 **Body**
 | name | type | required | description |
-| ---  | ---  | -------- | ----------- |
+| -----  | -----  | -------- | ----------- |
 | username | string | yes | username (unique) |
 | password | string | yes | password |
 | name | string | yes | user's first name |
