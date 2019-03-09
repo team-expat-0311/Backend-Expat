@@ -1,15 +1,19 @@
 # Expat API
 
 
-### Deployed API url
+#### Deployed API url
 API is not deployed yet, check back here soon...
 ***
 
-## Auth Routes
+# Auth 
 
-### [POST] /api/auth/register
+## Register a new user
 
-**Body**
+#### HTTP MEHTHOD: [POST] 
+#### URL: /api/auth/register
+
+
+**Schema:**
 
 | name | type | required | description |
 | :----  | :-----  | :-------- | :----------- |
@@ -33,8 +37,8 @@ API is not deployed yet, check back here soon...
 }
 ```
 
-**Reponses**
-***
+**Reponses:**
+---
 **201 (OK)**
 If you successfully register a user, the endpoint will return an HTTP reponse with status code 201 and a JSON representation of the new user that was created such as below
 ```javascript
@@ -67,6 +71,44 @@ The most likely cause for this is registering a duplicate username.  You'll get 
         "errno": 19,
         "code": "SQLITE_CONSTRAINT"
     },
-    "message": "The username test2 already exists, please choose another username"
+    "message": "The username <username> already exists, please choose another username"
+}
+```
+***
+
+## Login a user
+
+#### HTTP MEHTHOD: [POST] 
+#### URL: /api/auth/login
+
+
+**Schema:**
+
+| name | type | required | description |
+| :----  | :-----  | :-------- | :----------- |
+| username | string | yes | username (unique) |
+| password | string | yes | password |
+
+**Reponses:**
+---
+**200 (OK)**
+If you successfully login a user, the endpoing will return a status code of 200 and an object with a welcome message, and a json web token.
+
+The object returned will look like:
+```javascript
+{
+    "message": "Welcome <username>!, here's your token",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0IjoxLCJ1c2VybmFtZSI6InRlc3QxIiwicm9sZSI6InZpZXdlciIsImlhdCI6MTU1MjE1MDE4MSwiZXhwIjoxNTUyMjM2NTgxfQ.xAMg_VX1LstUcL0PJLJYJGEwZ9dkehHx_ZWAc4UzT5s"
+}
+```
+
+After a succesfful response, you'll want to store the token in localStorage, for later use in accessing protected resources.
+
+---
+**401 (Unauthorized)**
+If you try to login a user that does not exist in the database, or the password is incorrect, you'll get this response from the endpoint with a 401 status code.  The object returned will be:
+```javascript
+{
+    "message": "Invalid Credentials"
 }
 ```
