@@ -64,10 +64,6 @@ If you try to register a user without a username, password, role, or name, the e
 The most likely cause for this is registering a duplicate username.  You'll get back an HTTP response with status cod 500 and the following object
 ```javascript
 {
-    "error": {
-        "errno": 19,
-        "code": "SQLITE_CONSTRAINT"
-    },
     "message": "The username <username> already exists, please choose another username"
 }
 ```
