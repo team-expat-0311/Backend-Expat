@@ -28,7 +28,7 @@ API is not deployed yet, check back here soon...
 
 ```javascript
 {
-    "username": "test1",
+    "username": "test2",
 	"password": "test",
 	"name": "dan",
 	"role": "viewer",
@@ -43,15 +43,12 @@ API is not deployed yet, check back here soon...
 If you successfully register a user, the endpoint will return an HTTP reponse with status code 201 and a JSON representation of the new user that was created such as below
 ```javascript
 {
-    "id": 2,
+    "id": 3,
     "username": "test2",
-    "password": "$2a$08$4bHCx7Zou/vdsGTU6WyxBuqRWKnzBUN6e9awNAz2KMSe.C88PvuyO",
     "name": "dan",
     "role": "viewer",
     "age": 30,
-    "location": "Tokyo",
-    "created_at": "2019-03-09 15:58:59",
-    "updated_at": "2019-03-09 15:58:59"
+    "location": "Tokyo"
 }
 ```
 ***
