@@ -26,10 +26,8 @@ describe('server.js', () => {
                     location: "Tokyo"
                 }
 
-                //register the user so we can try to log it in
-                await request(server)
-                    .post('/api/auth/register')
-                    .send(newUser)
+                //add the user so we can try to log it in
+                await Users.add(newUser);
                 
                 const credentials = {
                     username: "test2",
