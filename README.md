@@ -5,12 +5,13 @@
 API is not deployed yet, check back here soon...
 ***
 
-# Auth 
+# *Auth* 
+
 
 ## Register a new user
 
-#### HTTP MEHTHOD: [POST] 
-#### URL: /api/auth/register
+*HTTP MEHTHOD: [POST]* 
+*URL: /api/auth/register*
 
 
 **Schema:**
@@ -71,8 +72,8 @@ The most likely cause for this is registering a duplicate username.  You'll get 
 
 ## Login a user
 
-#### HTTP MEHTHOD: [POST] 
-#### URL: /api/auth/login
+*HTTP MEHTHOD: [POST]* 
+*URL: /api/auth/login*
 
 
 **Schema:**
@@ -105,3 +106,32 @@ If you try to login a user that does not exist in the database, or the password 
     "message": "Invalid Credentials"
 }
 ```
+
+***
+# *Photos*
+
+## Get all photos
+*HTTP MEHTHOD: [GET]*
+*URL: /api/photos/all*
+
+**Reponses**
+---
+**200 (OK)**
+If you successfully fetch the photos, the endpoints will return an HTTP response with a status of 200 and a array of photo objects such as below
+```javascript
+[
+    {
+        "id": 1,
+        "user_id": 1,
+        "location": "tokyo",
+        "description": "downtown tokyo from above",
+        "img_url": "https://cdn.japantimes.2xx.jp/wp-content/uploads/2018/07/n-tokyo-a-20180715-870x580.jpg",
+        "created_at": "2019-03-10 23:55:12",
+        "updated_at": "2019-03-10 23:55:12"
+    },
+]
+```
+
+
+
+
