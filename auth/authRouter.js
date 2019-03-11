@@ -23,7 +23,7 @@ router.post('/register', async (req, res) => {
             res.status(201).json(newUser)
         }
     } catch (error) {
-        res.status(500).json({ message: `The username ${req.body.username} already exists, please choose another username` });
+        res.status(500).json(error);
     }
 });
 
