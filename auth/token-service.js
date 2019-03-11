@@ -4,7 +4,7 @@ module.exports = {
     generateToken
 }
 
-const secret = process.JWT_SECRET || 'the secret it out';
+const secret = process.env.JWT_SECRET || 'the secret is out';
 
 function generateToken(user) {
     const payload = {

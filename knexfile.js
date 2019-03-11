@@ -1,11 +1,6 @@
 // Update with your config settings.
-const localPgConnection = {
-  host: 'localhost',
-  database: 'lambda',
-  user: 'dan',
-  password: 'dan'
-}
-const prodDbConnection = process.env.DATABASE_URL || localPgConnection
+
+const prodDbConnection = process.env.DATABASE_URL 
 
 module.exports = {
   development: {
