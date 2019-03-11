@@ -6,6 +6,7 @@ const checkRole = require('../auth/checkRoleMiddleware.js');
 
 // *** routes here all have /api/photos prefix from server.js ***
 
+// get all photos for the main page (for any user either expat or viewer)
 router.get('/all', async (req, res) => {
     try {
         const photos = await Photos.getAllPhotos();
@@ -15,6 +16,7 @@ router.get('/all', async (req, res) => {
     }
 });
 
+// get photos by user_id.  If a user is an expat they'll have access to the endpoint where they can see all of their photos.  From this page, they can perform CRUD operations on their photos.
 router.get('/all/:id', restricted, checkRole('expat'), async (req, res) => {
     try {
         const photos = await Photos.getPhotosByUserId(req.params.id)
