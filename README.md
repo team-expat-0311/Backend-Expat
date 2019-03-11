@@ -133,6 +133,9 @@ If you successfully fetch the photos, the endpoints will return an HTTP response
 ```
 ---
 
+# PROTECTED ROUTES
+The remaining routes are all protected, they are unaccessable with providing the token generated during the login process.  They also require for the user to have the `role: expat`.
+
 ## Get photos by user_id
 *HTTP METHOD: [GET]*
 *URL: /api/photos/all/:id*
