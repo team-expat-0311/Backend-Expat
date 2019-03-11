@@ -15,7 +15,7 @@ router.get('/all', async (req, res) => {
     }
 });
 
-router.get('/all/:id', restricted, async (req, res) => {
+router.get('/all/:id', restricted, checkRole('expat'), async (req, res) => {
     try {
         const photos = await Photos.getPhotosByUserId(req.params.id)
         res.status(200).json(photos)
