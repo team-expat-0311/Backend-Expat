@@ -2,7 +2,9 @@ const db = require('../data/dbConfig.js')
 
 module.exports = {
     getAllPhotos,
-    getPhotosByUserId
+    getPhotosByUserId,
+    addPhoto,
+    findPhotoById
 }
 
 function getAllPhotos() {
@@ -12,4 +14,17 @@ function getAllPhotos() {
 function getPhotosByUserId(id) {
     return db('photos')
         .where({ user_id: id })
+}
+
+async function addPhoto(photo) {
+    const [id] = await db('photos').insert(photo, 'id');
+    console.log(id);
+
+    return findPhotoById(id);
+}
+
+function findPhotoById(id) {
+    return db('photos')
+        .where({ id })
+        .first();
 }
