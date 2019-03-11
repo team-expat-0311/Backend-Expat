@@ -28,6 +28,8 @@ router.get('/all/:id', restricted, checkRole('expat'), async (req, res) => {
     }
 })
 
+// add a photo to the db
+
 router.post('/all/:id', restricted, checkRole('expat'), async (req, res) => {
     try {
         const { location, img_url } = req.body;
