@@ -2,7 +2,7 @@
 
 
 #### Deployed API url
-API is not deployed yet, check back here soon...
+https://expat-journal.herokuapp.com/
 ***
 
 # *Auth* 
