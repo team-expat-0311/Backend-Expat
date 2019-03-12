@@ -255,7 +255,7 @@ If the endpoint is hit with the correct token and user has the correct role, and
     "updated_at": "2019-03-12T14:46:54.465Z"
 }
 ```
-The updated_at field, default to the time when the photo was created, so in order to update that on the front end (to potentially sort by recently updated), you may have to do a bit of manipulation with the current time gotten from `Date.now()` or using a package like `moment.js`.
+The `updated_at` value will be equal to the created_at field at the time of creation.  After this endpoint is hit, the `updated_at` value will be the time when the photo was updated.
 
 ---
 
