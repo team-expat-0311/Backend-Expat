@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const Photos = require('./photosModel.js');
-const jwt = require('jsonwebtoken');
 const restricted = require('../auth/restrictedMiddleware.js');
 const checkRole = require('../auth/checkRoleMiddleware.js');
 
