@@ -72,6 +72,7 @@ router.put('/all/:photoId', async (req, res) => {
             if (count) {
                 const photo = await Photos.findPhotoById(photoId);
                 if (photo) {
+                    photo.updated_at = new Date(Date.now()).toISOString();
                     res.status(200).json(photo)
                 } else {
                     res.status(404).json({ message: `The photo with id of ${photoId} does not exist.` });
