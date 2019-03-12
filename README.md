@@ -172,7 +172,7 @@ A 403 error means that the user does have the correct role to access the resourc
 *URL: /api/photos/all/:id*
 
 **Reponse**
----
+
 **200 (OK)**
 If you successfully fetch the photos, the endpoints will return an HTTP response with a status of 200 and a array of photo objects such as below.  These photos will only be the ones that belong to the :id parameter which is the user's id.  So `/api/photos/all/1` will return all of the photos in the database belonging to user 1.
 ```javascript
@@ -195,7 +195,7 @@ If you successfully fetch the photos, the endpoints will return an HTTP response
 *HTTP METHOD: [POST]*
 *URL: /api/photos/all/:id*
 
-**Reponse**
+**Reponses**
 ---
 **201 (Created)**
 If the endpoint is hit with the correct token and the user has the correct role, the endpoint will send a 201 successful response and return a json like below:
@@ -210,6 +210,32 @@ If the endpoint is hit with the correct token and the user has the correct role,
     "updated_at": "2019-03-11 23:04:23"
 }
 ```
+
+---
+**400 (Bad Request)**
+If the endpoint is hit with the correct token and the user has the correct role, but the photo object passed into the request does not have the required information `location` and `img_url`, the endpoint will return a response with status 400 and the following object:
+```javascript
+{ message: 'Please provide the user_id, location, and img_url for this photo' }
+```
+
+---
+## DELETE A PHOTO
+*HTTP METHOD: [DELETE]*
+*URL: /api/photos/all/:photoId*
+
+**Responses**
+---
+**204 (No Content)**
+If the endpoint is hit with the correct token and the user has the correct role, and the photo with the passed id exists, the endpoint will return an HTTP response with a status code of 204.  No other information will be passed back to the client.
+
+---
+
+**404 (Not Found)**
+If the endpoint is hit with the correct token and the user has the correct role, but a photot with the passed id does not exist in the database, the endpoint will return a response with a 400 status code and the following object:
+```javascript
+{ message: `A photo with id <photoId> could not be found.` }
+```
+
 
 
 
