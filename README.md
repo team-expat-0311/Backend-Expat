@@ -231,9 +231,44 @@ If the endpoint is hit with the correct token and the user has the correct role,
 ---
 
 **404 (Not Found)**
-If the endpoint is hit with the correct token and the user has the correct role, but a photot with the passed id does not exist in the database, the endpoint will return a response with a 400 status code and the following object:
+If the endpoint is hit with the correct token and the user has the correct role, but a photo with the passed id does not exist in the database, the endpoint will return a response with a 400 status code and the following object:
 ```javascript
 { message: `A photo with id <photoId> could not be found.` }
+```
+---
+## UPDATE A PHOTO
+*HTTP METHOD: [PUT]*
+*URL: /api/photos/all:photoId*
+
+**Responses**
+---
+**200 (OK)**
+If the endpoint is hit with the correct token and user has the correct role, and the photo with the passed id exists, the endpoints will return an HTTP response with a status code of 200.  A JSON object with the updated photo will be returned such as below:
+```javascript
+{
+    "id": 10,
+    "user_id": 1,
+    "location": "kyoto",
+    "description": "bamboo forest",
+    "img_url": "https://via.placeholder.com/150",
+    "created_at": "2019-03-12T14:46:54.465Z",
+    "updated_at": "2019-03-12T14:46:54.465Z"
+}
+```
+The updated_at field, default to the time when the photo was created, so in order to update that on the front end (to potentially sort by recently updated), you may have to do a bit of manipulation with the current time gotten from `Date.now()` or using a package like `moment.js`.
+
+---
+
+**400 (Bad Request)**
+If the endpoint is hit with the correct token and the user has the correct role, but the newPhoto object passed in does not have the fields `location` or `img_url` a 400 status code will be returned with the following error:
+```javascript
+{ message: 'Please provide a location and img_url for the photo' }
+```
+
+**404 (Not Found)**
+If the endpoint is hit with the correct token and the user has the correct role, but a photo with the passed id does not exist in the database, the endpoint will return a response with a 400 status code and the following object:
+```javascript
+{ "message": "The photo with id of <photoId> does not exist." }
 ```
 
 
