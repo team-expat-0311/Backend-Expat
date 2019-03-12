@@ -4,7 +4,8 @@ module.exports = {
     getAllPhotos,
     getPhotosByUserId,
     addPhoto,
-    findPhotoById
+    findPhotoById,
+    removePhotoById
 }
 
 function getAllPhotos() {
@@ -18,7 +19,6 @@ function getPhotosByUserId(id) {
 
 async function addPhoto(photo) {
     const [id] = await db('photos').insert(photo, 'id');
-    console.log(id);
 
     return findPhotoById(id);
 }
@@ -27,4 +27,10 @@ function findPhotoById(id) {
     return db('photos')
         .where({ id })
         .first();
+}
+
+function removePhotoById(id) {
+    return db('photos')
+        .where({ id })
+        .del();
 }

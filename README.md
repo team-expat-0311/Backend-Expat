@@ -190,7 +190,7 @@ If you successfully fetch the photos, the endpoints will return an HTTP response
 ```
 
 ---
-## Add a photo
+## ADD A PHOTO
 
 *HTTP METHOD: [POST]*
 *URL: /api/photos/all/:id*

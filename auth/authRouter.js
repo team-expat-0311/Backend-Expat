@@ -32,7 +32,6 @@ router.post('/login', async (req, res) => {
         let { username, password } = req.body;
 
         const user = await Users.findBy({ username }).first();
-        console.log(user);
         if (user && bcrypt.compareSync(password, user.password)) {
             const token = tokenService.generateToken(user);
             // return the token to be saved in front-end for future requests

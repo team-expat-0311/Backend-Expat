@@ -46,6 +46,20 @@ router.post('/all/:id', restricted, checkRole('expat'), async (req, res) => {
     }
 });
 
+router.delete('/all/:photoId', async (req, res) => {
+    try {
+        const count = await Photos.removePhotoById(req.params.photoId);
+        console.log(count);
+        if (count > 0) {
+            res.status(204).end()
+        } else {
+            res.status(400).json({ message: `A photo with id ${req.params.photoId} could not be found.` });
+        }
+    } catch (error) {
+        res.status(500).json(error);
+    }
+});
+
 
 
 module.exports = router;
