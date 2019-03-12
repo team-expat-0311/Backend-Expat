@@ -5,7 +5,8 @@ module.exports = {
     getPhotosByUserId,
     addPhoto,
     findPhotoById,
-    removePhotoById
+    removePhotoById,
+    updatePhoto
 }
 
 function getAllPhotos() {
@@ -33,4 +34,10 @@ function removePhotoById(id) {
     return db('photos')
         .where({ id })
         .del();
+}
+
+function updatePhoto(id, changes) {
+    return db('photos')
+        .where({ id })
+        .update(changes, 'id');
 }

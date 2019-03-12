@@ -60,6 +60,28 @@ router.delete('/all/:photoId', restricted, checkRole('expat'), async (req, res) 
     }
 });
 
+router.put('/all/:photoId', async (req, res) => {
+    const photoId = req.params.photoId;
+    const updatedPhoto = req.body;
+
+    if (!updatedPhoto.location || !updatedPhoto.img_url) {
+        res.status(400).json({ message: 'Please provide a location and img_url for the photo' });
+    } else {
+        try {
+            const count = await Photos.updatePhoto(photoId, updatedPhoto)
+            console.log(count);
+            if (count) {
+                const photo = await Photos.findPhotoById(photoId)
+                res.status(200).json(photo)
+            } else {
+                res.status(404).json({ message: `The photo with id of ${photoId} does not exist.` });
+            }
+        } catch (error) {
+            res.status(500).json(error);
+        }
+    }
+});
+
 
 
 module.exports = router;
