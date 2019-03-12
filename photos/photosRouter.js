@@ -68,11 +68,14 @@ router.put('/all/:photoId', async (req, res) => {
         res.status(400).json({ message: 'Please provide a location and img_url for the photo' });
     } else {
         try {
-            const count = await Photos.updatePhoto(photoId, updatedPhoto)
-            console.log(count);
+            const count = await Photos.updatePhoto(photoId, updatedPhoto);
             if (count) {
-                const photo = await Photos.findPhotoById(photoId)
-                res.status(200).json(photo)
+                const photo = await Photos.findPhotoById(photoId);
+                if (photo) {
+                    res.status(200).json(photo)
+                } else {
+                    res.status(404).json({ message: `The photo with id of ${photoId} does not exist.` });
+                }
             } else {
                 res.status(404).json({ message: `The photo with id of ${photoId} does not exist.` });
             }
