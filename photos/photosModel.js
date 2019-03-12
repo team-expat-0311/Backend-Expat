@@ -37,6 +37,10 @@ function removePhotoById(id) {
 }
 
 function updatePhoto(id, changes) {
+    changes = {
+        ...changes,
+        updated_at: new Date(Date.now()).toISOString()
+    }
     return db('photos')
         .where({ id })
         .update(changes, 'id');
