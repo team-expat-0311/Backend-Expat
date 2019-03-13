@@ -169,7 +169,7 @@ A 403 error means that the user does have the correct role to access the resourc
 
 ## GET PHOTOS BY USER_ID
 *HTTP METHOD: [GET]*
-*URL: /api/photos/all/:id*
+*URL: /api/photos/all/:user_id*
 
 **Reponse**
 
@@ -193,7 +193,7 @@ If you successfully fetch the photos, the endpoints will return an HTTP response
 ## ADD A PHOTO
 
 *HTTP METHOD: [POST]*
-*URL: /api/photos/all/:id*
+*URL: /api/photos/all/:user_id*
 
 **Reponses**
 ---
